@@ -7,12 +7,9 @@ import HomeScreen from "../screens/HomeScreen";
 import { StyleSheet, Text } from "react-native";
 import { View } from "react-native";
 import Header from "../components/Header";
+import DepositScreen from "../screens/DepositScreen";
 
-const DepositScreen = () => (
-  <View style={styles.container}>
-    <Text>Deposit Screen</Text>
-  </View>
-);
+
 
 const WithdrawScreen = () => (
   <View style={styles.container}>
@@ -43,7 +40,7 @@ function UserRoutes() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === "HomeScreen") {
+          if (route.name === "Home") {
             iconName = focused ? "home" : "home-outline";
           } else if (route.name === "Deposit") {
             iconName = focused ? "add-circle" : "add-circle-outline";
@@ -65,7 +62,7 @@ function UserRoutes() {
         options={{
           header: (props) => <Header {...props} />,
         }}
-        name="HomeScreen"
+        name="Home"
         component={HomeScreen}
       />
 

@@ -22,7 +22,7 @@ function App(){
   return(
     <NavigationContainer>
       <stack.Navigator initialRouteName="HomeScreen">
-        <stack.Screen options={{headerShown:false}} name="Home" component={UserRoutes} />
+        <stack.Screen options={{headerShown:false}} name="HomeScreen" component={UserRoutes} />
         <stack.Screen name="List" component={ListScreen} />
         <stack.Screen options={{headerShown:false}} name="Login" component={LoginScreen} />
         <stack.Screen options={{headerShown:false}} name="Register1" component={RegisterScreen1} />
