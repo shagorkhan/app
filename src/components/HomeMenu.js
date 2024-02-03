@@ -5,6 +5,8 @@ import {
   ImageBackground,
   StyleSheet,
   Dimensions,
+  ScrollView,
+  Image,
 } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
@@ -55,12 +57,48 @@ export default function HomeMenu() {
           </TouchableOpacity>
         ))}
       </View>
-      <View>
-        <Text style={{ fontSize: 18, fontWeight: "bold", marginLeft: 10 }}>Options</Text>
+      <View style={{ paddingHorizontal: 5 }}>
+        <Text
+          style={{
+            fontSize: 18,
+            fontWeight: "bold",
+            marginHorizontal: 5,
+            marginVertical: 5,
+          }}
+        >
+          Options
+        </Text>
+        <ScrollView showsHorizontalScrollIndicator={false} horizontal>
+          {[2, 3, 4, 1].map((d) => (
+            <Options key={d} />
+          ))}
+        </ScrollView>
       </View>
     </View>
   );
 }
+const Options = () => {
+  return (
+    <TouchableOpacity
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        marginVertical: 5,
+        gap: 5,
+        marginHorizontal: 5,
+        backgroundColor: "#fff",
+        padding: 5,
+        borderRadius: 5,
+      }}
+    >
+      <Image
+        style={{ height: 40, width: 40 }}
+        src="https://images-platform.99static.com//-m4fMZmnACzCpHreGrowqNVS0k4=/237x264:737x764/fit-in/590x590/99designs-contests-attachments/115/115535/attachment_115535681"
+      />
+      <Text style={{ fontWeight: "500" }}>Ragbi Play</Text>
+    </TouchableOpacity>
+  );
+};
 const styles = StyleSheet.create({
   boxContainer: {},
   row: {
