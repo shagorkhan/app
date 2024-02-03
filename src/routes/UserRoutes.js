@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -34,6 +34,7 @@ const Tab = createBottomTabNavigator();
 //const stack = createStackNavigator();
 
 function UserRoutes() {
+  
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -23,12 +23,23 @@ import fortunegems from "../../assets/fortunegems.png";
 import superace from "../../assets/superace.png";
 import moneycoming from "../../assets/moneycoming.png";
 import HomeMenu from "../components/HomeMenu";
+import { getData } from "../functions/storage";
+import { useLoader } from "../context/LoaderContext";
 
 // Get the device screen dimensions
 const { width, height } = Dimensions.get("window");
 
 const HomeScreen = () => {
   const sliderImages = [image1, image2, image3, image4];
+  const {showLoader,hideLoader}=useLoader()
+  const [category,setCategory]=useState()
+  useEffect(()=>{
+    getData("category").then(d=>{
+      hideLoader()
+      setCategory(d)
+      //console.log(d)
+    })
+  },[])
 
   return (
     <ScrollView>
@@ -40,7 +51,7 @@ const HomeScreen = () => {
             </View>
           ))}
         </Swiper>
-        <HomeMenu />
+        <HomeMenu data={category} />
 
         <View style={styles.twoBoxesContainer}>
           <Text style={{ fontSize: 18, fontWeight: "bold", marginLeft: 10 }}>

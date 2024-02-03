@@ -36,13 +36,16 @@ const boxData = [
 
   // ... add more entries for the remaining boxes
 ];
-export default function HomeMenu() {
+export default function HomeMenu({ data }) {
   return (
     <View style={styles.boxContainer}>
       <View style={styles.row}>
-        {boxData.slice(0, 8).map((box) => (
-          <TouchableOpacity key={box.id} style={[styles.box]}>
-            <ImageBackground source={box.logo} style={styles.boxLogo}>
+        {data?.map((box, i) => (
+          <TouchableOpacity key={i} style={[styles.box]}>
+            <ImageBackground
+              source={require("../../assets/livecasino.png")}
+              style={styles.boxLogo}
+            >
               <LinearGradient
                 colors={[
                   "rgba(224, 223, 223, 0)",
@@ -51,7 +54,7 @@ export default function HomeMenu() {
                 ]}
                 style={styles.containerBox}
               >
-                <Text style={styles.boxName}>{box.name}</Text>
+                <Text style={styles.boxName}>{box.title}</Text>
               </LinearGradient>
             </ImageBackground>
           </TouchableOpacity>
@@ -109,31 +112,28 @@ const styles = StyleSheet.create({
   },
   box: {
     width: width / 4 - 10, // Adjust the width of the box
-    height: width / 4,
+    height: width / 4 - 5,
     backgroundColor: "#e0e0e0",
     marginBottom: 10,
-    borderRadius: 8,
     borderRadius: 10,
     overflow: "hidden",
+    backgroundColor: "green",
   },
   boxLogo: {
     flex: 1,
-    width: "100%", // Make the logo take the full width of the box
-    aspectRatio: 1, // Maintain the aspect ratio of the logo
-    resizeMode: "cover", // Ensure the logo does not stretch
   },
   boxName: {
-    textAlign: "center",
     fontSize: 14,
     color: "white",
     fontWeight: "600",
+    textAlign: "center",
+    width: "100%",
   },
 
   containerBox: {
-    flex: 1,
-    padding: 5,
     flexDirection: "row",
-    justifyContent: "center",
+    flex: 1,
     alignItems: "flex-end",
+    paddingVertical: 10,
   },
 });
