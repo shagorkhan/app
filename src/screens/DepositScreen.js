@@ -1,6 +1,7 @@
 //import { forHorizontalIOS } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/CardStyleInterpolators';
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { Select, Box, CheckIcon, Center, NativeBaseProvider } from "native-base";
 
 const DepositScreen = () => {
   const [selectedPayment, setSelectedPayment] = useState(null);
@@ -20,8 +21,7 @@ const DepositScreen = () => {
       <Text style={{fontSize:15, textAlign:'center'}}>With your tasted wallet and explore more</Text>
       <Text style={{fontSize:15, textAlign:'center', marginBottom:40}}>gaming features with our  client area</Text>
       <Text style={styles.title}>Select Payment Method</Text>
-      <View>
-      <ScrollView horizontal={true}>
+      <View style={{flexDirection:'row', flexWrap:'wrap', gap:10}}>
       <TouchableOpacity
         style={[styles.paymentOption, selectedPayment === 'bKash' && styles.selectedPayment]}
         onPress={() => handlePaymentSelection('bKash')}
@@ -49,7 +49,6 @@ const DepositScreen = () => {
       >
         <Text style={styles.paymentText}>UPay</Text>
       </TouchableOpacity>
-      </ScrollView>
       </View>
       <Text style={{fontSize:15}}>Deposit Channel</Text>
       <TouchableOpacity
@@ -106,6 +105,23 @@ const DepositScreen = () => {
       </View>
       <Text style={{fontSize:15}}>Deposit Bonus </Text>
 
+      <Select minWidth="200" accessibilityLabel="Choose Service" placeholder="Choose Service" _selectedItem={{
+        bg: "teal.600",
+        endIcon: <CheckIcon size="5" />
+      }} mt={1} onValueChange={itemValue => {}}>
+          <Select.Item label="No Bonus" value="ux" />
+          <Select.Item label="Web Development" value="web" />
+          <Select.Item label="Cross Platform Development" value="cross" />
+          <Select.Item label="UI Designing" value="ui" />
+          <Select.Item label="Backend Development" value="backend" />
+        </Select>
+
+        <TouchableOpacity
+        style={styles.depositButton}
+      >
+        <Text style={styles.paymentText}>Deposit</Text>
+      </TouchableOpacity>
+        
     </View>
   );
 };
@@ -113,7 +129,7 @@ const DepositScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: 20,
     //justifyContent: 'center',
     //alignItems: 'center',
   },
@@ -125,7 +141,7 @@ const styles = StyleSheet.create({
   paymentOption: {
     backgroundColor: '#e0e0e0',
     padding: 10,
-    marginHorizontal: 5,
+    //marginHorizontal: 5,
     width: 80,
     height: 50,
     alignItems: 'center',
@@ -163,6 +179,15 @@ const styles = StyleSheet.create({
   selectedAmount: {
     backgroundColor: 'blue',
     borderColor: 'white',
+  },
+  depositButton: {
+    backgroundColor: '#e0e0e0',
+    padding: 10,
+    marginHorizontal: 20,
+    //width: "100%",
+    height: 50,
+    alignItems: 'center',
+    borderRadius: 10,
   },
 });
 
