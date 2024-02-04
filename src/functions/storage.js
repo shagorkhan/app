@@ -17,3 +17,20 @@ export const getData = async (key) => {
     console.error(e.message);
   }
 };
+export const storeValue = async (key, value) => {
+  try {
+    await AsyncStorage.setItem(key, value);
+  } catch (e) {
+    // saving error
+    console.error(e.message);
+  }
+};
+export const getValue = async (key) => {
+  try {
+    const jsonValue = await AsyncStorage.getItem(key);
+    return jsonValue 
+  } catch (e) {
+    // error reading value
+    console.error(e.message);
+  }
+};

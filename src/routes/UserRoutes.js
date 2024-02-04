@@ -9,7 +9,7 @@ import { View } from "react-native";
 import Header from "../components/Header";
 import DepositScreen from "../screens/DepositScreen";
 import { useAuth } from "../context/AuthProvider";
-import { getData } from "../functions/storage";
+import {getValue } from "../functions/storage";
 import getUser from "../apis/getUser";
 import { useLoader } from "../context/LoaderContext";
 import HomeScreenOffline from "../screens/HomeScreenOffline";
@@ -41,10 +41,10 @@ function UserRoutes(props) {
   const { showLoader, hideLoader } = useLoader();
   useEffect(() => {
     getUserInfo();
-  }, []);
+  }, [user]);
   const getUserInfo = async () => {
     showLoader();
-    const token = await getData("token");
+    const token = await getValue("token");
     if (token) {
       const res = await getUser(token);
       setUser(res.data);
