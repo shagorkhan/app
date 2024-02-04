@@ -8,49 +8,55 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
+import url from "../apis/url";
 const { width, height } = Dimensions.get("window");
 
 const boxData = [
   {
     id: 1,
-    logo: require("../../assets/livecasino.png"),
+    logo: require("../../assets/casino0.png"),
     name: "Live Casino",
   },
-  { id: 2, logo: require("../../assets/arcade.png"), name: "Arcade" },
-  { id: 3, logo: require("../../assets/slot.png"), name: "Slot" },
-  { id: 4, logo: require("../../assets/cardgame.png"), name: "Card Game" },
-  { id: 5, logo: require("../../assets/roulette.png"), name: "Roulette" },
+  { id: 2, logo: require("../../assets/casino1.png"), name: "Arcade" },
+  { id: 3, logo: require("../../assets/casino2.png"), name: "Slot" },
+  { id: 4, logo: require("../../assets/casino3.png"), name: "Card Game" },
+  { id: 5, logo: require("../../assets/casino4.png"), name: "Roulette" },
   {
     id: 6,
-    logo: require("../../assets/videopoker.png"),
+    logo: require("../../assets/casino5.png"),
     name: "Video Poker",
   },
-  { id: 7, logo: require("../../assets/lottery.png"), name: "Lottery" },
+  { id: 7, logo: require("../../assets/casino6.png"), name: "Lottery" },
   {
     id: 8,
-    logo: require("../../assets/cricketlive.png"),
+    logo: require("../../assets/casino7.png"),
     name: "Cricket Live",
   },
 
   // ... add more entries for the remaining boxes
 ];
 export default function HomeMenu({ data }) {
+  const [items,setItems]=useState(0)
+  const scrollRef=useRef()
   return (
     <View style={styles.boxContainer}>
       <View style={styles.row}>
         {data?.map((box, i) => (
-          <TouchableOpacity key={i} style={[styles.box]}>
+          <TouchableOpacity onPress={()=>{
+            setItems(i)
+            scrollRef?.current.scrollTo({ x: 0, y: 0, animated: true });
+          }} key={i} style={[styles.box]}>
             <ImageBackground
-              source={require("../../assets/livecasino.png")}
+              source={boxData.find((d,j)=>j===i).logo}
               style={styles.boxLogo}
             >
               <LinearGradient
                 colors={[
                   "rgba(224, 223, 223, 0)",
                   "rgba(224, 223, 223, 0)",
-                  "#000000",
+                  `${items===i?"#3d6aee":"#000000"}`,
                 ]}
                 style={styles.containerBox}
               >
@@ -71,16 +77,16 @@ export default function HomeMenu({ data }) {
         >
           Options
         </Text>
-        <ScrollView showsHorizontalScrollIndicator={false} horizontal>
-          {[2, 3, 4, 1].map((d) => (
-            <Options key={d} />
+        <ScrollView ref={scrollRef} showsHorizontalScrollIndicator={false} horizontal>
+          {data[items]?.subCategory?.map((d,i) => (
+            <Options data={d} key={i} />
           ))}
         </ScrollView>
       </View>
     </View>
   );
 }
-const Options = () => {
+const Options = ({data}) => {
   return (
     <TouchableOpacity
       style={{
@@ -89,16 +95,17 @@ const Options = () => {
         marginVertical: 5,
         gap: 5,
         marginHorizontal: 5,
-        backgroundColor: "#fff",
+        backgroundColor: "#011A5C",
         padding: 5,
         borderRadius: 5,
+        width:200
       }}
     >
       <Image
         style={{ height: 40, width: 40 }}
-        src="https://images-platform.99static.com//-m4fMZmnACzCpHreGrowqNVS0k4=/237x264:737x764/fit-in/590x590/99designs-contests-attachments/115/115535/attachment_115535681"
+        src={url+data.icon}
       />
-      <Text style={{ fontWeight: "500" }}>Ragbi Play</Text>
+      <Text style={{ fontWeight: "500",color:"#fff" }}>{data.title}</Text>
     </TouchableOpacity>
   );
 };

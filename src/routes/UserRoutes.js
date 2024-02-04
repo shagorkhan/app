@@ -8,8 +8,11 @@ import { StyleSheet, Text } from "react-native";
 import { View } from "react-native";
 import Header from "../components/Header";
 import DepositScreen from "../screens/DepositScreen";
-
-
+import { useAuth } from "../context/AuthProvider";
+import { getData } from "../functions/storage";
+import getUser from "../apis/getUser";
+import { useLoader } from "../context/LoaderContext";
+import HomeScreenOffline from "../screens/HomeScreenOffline";
 
 const WithdrawScreen = () => (
   <View style={styles.container}>
@@ -33,8 +36,26 @@ const Tab = createBottomTabNavigator();
 
 //const stack = createStackNavigator();
 
-function UserRoutes() {
-  
+function UserRoutes(props) {
+  const { user, setUser } = useAuth();
+  const { showLoader, hideLoader } = useLoader();
+  useEffect(() => {
+    getUserInfo();
+  }, []);
+  const getUserInfo = async () => {
+    showLoader();
+    const token = await getData("token");
+    if (token) {
+      const res = await getUser(token);
+      setUser(res.data);
+      hideLoader();
+    } else {
+      hideLoader();
+    }
+  };
+  if(!user){
+    return <HomeScreenOffline {...props}/>
+  }
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

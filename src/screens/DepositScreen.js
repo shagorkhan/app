@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
 import { Select, Box, CheckIcon, Center, NativeBaseProvider } from "native-base";
+import { useAuth } from '../context/AuthProvider';
 
-const DepositScreen = () => {
+const DepositScreen = ({navigation}) => {
+  const { user, setUser } = useAuth();
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [selectedAmount, setSelectedAmount] = useState(null);
 
@@ -14,6 +16,10 @@ const DepositScreen = () => {
   const handleAmountSelection = (amount) => {
     setSelectedAmount(amount);
   };
+  //console.log(user)
+  if(!user){
+    navigation?.navigate("Login")
+  }
 
   return (
     <View style={styles.container}>
