@@ -42,6 +42,9 @@ const HomeScreenOffline = (props) => {
       //console.log(d)
     });
   }, []);
+  if(!category){
+    return null
+  }
 
   return (
     <View style={{ flex: 1 }}>

@@ -40,6 +40,9 @@ const HomeScreen = () => {
       //console.log(d)
     })
   },[])
+  if(!category){
+    return null
+  }
 
   return (
     <ScrollView>
