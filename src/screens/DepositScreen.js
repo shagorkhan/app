@@ -1,6 +1,6 @@
 //import { forHorizontalIOS } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/CardStyleInterpolators';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
 import { Select, Box, CheckIcon, Center, NativeBaseProvider } from "native-base";
 
 const DepositScreen = () => {
@@ -17,29 +17,39 @@ const DepositScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={{fontSize:40, textAlign:'center', marginBottom:20}}>Deposit</Text>
-      <Text style={{fontSize:15, textAlign:'center'}}>With your tasted wallet and explore more</Text>
-      <Text style={{fontSize:15, textAlign:'center', marginBottom:40}}>gaming features with our  client area</Text>
+      <Text style={{fontSize:35, textAlign:'center', marginBottom:15}}>Deposit</Text>
+      <Text style={{fontSize:13, textAlign:'center'}}>With your tasted wallet and explore more</Text>
+      <Text style={{fontSize:13, textAlign:'center', marginBottom:25}}>gaming features with our  client area</Text>
       <Text style={styles.title}>Select Payment Method</Text>
       <View style={{flexDirection:'row', flexWrap:'wrap', gap:10}}>
       <TouchableOpacity
         style={[styles.paymentOption, selectedPayment === 'bKash' && styles.selectedPayment]}
         onPress={() => handlePaymentSelection('bKash')}
       >
-        <Text style={styles.paymentText}>bKash</Text>
+        <Image
+            source={{ uri: 'https://seeklogo.com/images/B/bkash-logo-835789094A-seeklogo.com.png' }}
+            style={styles.paymentLogo}
+          />
       </TouchableOpacity>
 
       <TouchableOpacity
         style={[styles.paymentOption, selectedPayment === 'Nagad' && styles.selectedPayment]}
         onPress={() => handlePaymentSelection('Nagad')}
       >
-        <Text style={styles.paymentText}>Nagad</Text>
+        <Image
+            source={{ uri: 'https://nagad.com.bd/_nuxt/img/new-logo.6e48f4e.png' }}
+            style={styles.paymentLogo}
+          />
       </TouchableOpacity>
 
       <TouchableOpacity
         style={[styles.paymentOption, selectedPayment === 'Rocket' && styles.selectedPayment]}
         onPress={() => handlePaymentSelection('Rocket')}
       >
+        <Image
+            source={{ uri: 'https://www.newagebd.com/files/records/news/202204/167148_130.jpg' }}
+            style={styles.paymentLogo}
+          />
         <Text style={styles.paymentText}>Rocket</Text>
       </TouchableOpacity>
 
@@ -47,17 +57,21 @@ const DepositScreen = () => {
         style={[styles.paymentOption, selectedPayment === 'UPay' && styles.selectedPayment]}
         onPress={() => handlePaymentSelection('UPay')}
       >
+        <Image
+            source={{ uri: 'https://www.newagebd.com/files/records/news/202204/167148_130.jpg' }}
+            style={styles.paymentLogo}
+          />
         <Text style={styles.paymentText}>UPay</Text>
       </TouchableOpacity>
       </View>
-      <Text style={{fontSize:15}}>Deposit Channel</Text>
+      <Text style={{fontSize:14, marginTop:20, marginBottom:5,}}>Deposit Channel</Text>
       <TouchableOpacity
         style={[styles.paymentOption, selectedPayment === 'Dpay' && styles.selectedPayment]}
        // onPress={() => handlePaymentSelection('Dpay')}
       >
         <Text style={styles.paymentText}>Dpay</Text>
       </TouchableOpacity>
-      <Text style={{fontSize:15}}>Amount  200 Taka- 25,000 Taka </Text>
+      <Text style={{fontSize:14, marginTop:20}}>Amount  200 Taka- 25,000 Taka </Text>
       <View style={styles.amountContainer}>
         <View style={styles.row}>
           <TouchableOpacity
@@ -103,7 +117,7 @@ const DepositScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-      <Text style={{fontSize:15}}>Deposit Bonus </Text>
+      <Text style={{fontSize:14}}>Deposit Bonus </Text>
 
       <Select minWidth="200" accessibilityLabel="Choose Service" placeholder="Choose Service" _selectedItem={{
         bg: "teal.600",
@@ -135,7 +149,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 14,
-    fontWeight: 'bold',
+    //fontWeight: 'bold',
     marginBottom: 5,
   },
   paymentOption: {
@@ -155,14 +169,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue', // Change the color for the selected payment method
     borderColor: 'white',
   },
+  paymentLogo: {
+    width: 80,
+    height: 30,
+    //marginBottom: 10,
+  },
   amountContainer: {
-    alignItems: 'center',
+    //alignItems: 'center',
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 10,
     flexWrap:"wrap",
+
   },
   amountOption: {
     backgroundColor: '#e0e0e0',
@@ -181,13 +201,14 @@ const styles = StyleSheet.create({
     borderColor: 'white',
   },
   depositButton: {
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#39BB0C',
     padding: 10,
-    marginHorizontal: 20,
+    marginHorizontal: 30,
     //width: "100%",
-    height: 50,
+    height: 40,
     alignItems: 'center',
     borderRadius: 10,
+    marginTop:20,
   },
 });
 
