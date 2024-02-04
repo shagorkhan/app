@@ -14,14 +14,6 @@ import image1 from "../../assets/image1.png";
 import image2 from "../../assets/image2.png";
 import image3 from "../../assets/image3.jpg";
 import image4 from "../../assets/image4.jpg";
-import livegame1 from "../../assets/livegame1.jpg";
-import livegame2 from "../../assets/livegame2.jpg";
-import livegame3 from "../../assets/livegame3.jpg";
-import livegame4 from "../../assets/livegame4.jpg";
-import goldenland from "../../assets/goldenland.png";
-import fortunegems from "../../assets/fortunegems.png";
-import superace from "../../assets/superace.png";
-import moneycoming from "../../assets/moneycoming.png";
 import HomeMenu from "../components/HomeMenu";
 import { getData } from "../functions/storage";
 import { useLoader } from "../context/LoaderContext";
@@ -29,19 +21,36 @@ import { useLoader } from "../context/LoaderContext";
 // Get the device screen dimensions
 const { width, height } = Dimensions.get("window");
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const sliderImages = [image1, image2, image3, image4];
-  const {showLoader,hideLoader}=useLoader()
-  const [category,setCategory]=useState()
-  useEffect(()=>{
-    getData("category").then(d=>{
-      hideLoader()
-      setCategory(d)
-      //console.log(d)
-    })
-  },[])
-  if(!category){
-    return null
+  const { showLoader, hideLoader } = useLoader();
+  const [category, setCategory] = useState();
+  const [liveGames, setLiveGames] = useState();
+  const [fishGames, setFishGames] = useState();
+  const [slotGames, setSlotGames] = useState();
+
+  useEffect(() => {
+    getAllData();
+  }, []);
+  const getAllData = async () => {
+    showLoader();
+    try {
+      const category = await getData("category");
+      setCategory(category);
+      const live = await getData("live");
+      setLiveGames(live);
+      const fish = await getData("fish");
+      setFishGames(fish);
+      const slot = await getData("slot");
+      setSlotGames(slot);
+      hideLoader();
+    } catch (error) {
+      console.error(error);
+      hideLoader();
+    }
+  };
+  if (!category) {
+    return null;
   }
 
   return (
@@ -61,22 +70,18 @@ const HomeScreen = () => {
             Live Games
           </Text>
           <ScrollView horizontal={true}>
-            <TouchableOpacity style={styles.twoBoxes}>
-              <Image source={livegame1} style={styles.twoBoxesImage} />
-              {/* Additional content for the first box if needed */}
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.twoBoxes}>
-              <Image source={livegame2} style={styles.twoBoxesImage} />
-              {/* Additional content for the second box if needed */}
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.twoBoxes}>
-              <Image source={livegame3} style={styles.twoBoxesImage} />
-              {/* Additional content for the second box if needed */}
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.twoBoxes}>
-              <Image source={livegame4} style={styles.twoBoxesImage} />
-              {/* Additional content for the first box if needed */}
-            </TouchableOpacity>
+            {liveGames?.map((doc, i) => (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("GameScreen", { id: doc.id });
+                }}
+                key={i}
+                style={styles.twoBoxes}
+              >
+                <Image src={doc.img} style={styles.twoBoxesImage} />
+                {/* Additional content for the first box if needed */}
+              </TouchableOpacity>
+            ))}
           </ScrollView>
         </View>
 
@@ -87,22 +92,17 @@ const HomeScreen = () => {
             Favorite's Games
           </Text>
           <ScrollView horizontal={true}>
-            <TouchableOpacity style={styles.twoBoxes}>
-              <Image source={goldenland} style={styles.twoBoxesImage} />
-              {/* Additional content for the first box if needed */}
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.twoBoxes}>
-              <Image source={fortunegems} style={styles.twoBoxesImage} />
-              {/* Additional content for the second box if needed */}
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.twoBoxes}>
-              <Image source={goldenland} style={styles.twoBoxesImage} />
-              {/* Additional content for the second box if needed */}
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.twoBoxes}>
-              <Image source={fortunegems} style={styles.twoBoxesImage} />
-              {/* Additional content for the first box if needed */}
-            </TouchableOpacity>
+            {slotGames?.map((doc, i) => (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("GameScreen", { id: doc.id });
+                }}
+                key={i}
+                style={styles.twoBoxes}
+              >
+                <Image src={doc.img} style={styles.twoBoxesImage} />
+              </TouchableOpacity>
+            ))}
           </ScrollView>
         </View>
 
@@ -113,22 +113,17 @@ const HomeScreen = () => {
             Feature's Games
           </Text>
           <ScrollView horizontal={true}>
-            <TouchableOpacity style={styles.twoBoxes}>
-              <Image source={superace} style={styles.twoBoxesImage} />
-              {/* Additional content for the first box if needed */}
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.twoBoxes}>
-              <Image source={moneycoming} style={styles.twoBoxesImage} />
-              {/* Additional content for the second box if needed */}
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.twoBoxes}>
-              <Image source={superace} style={styles.twoBoxesImage} />
-              {/* Additional content for the second box if needed */}
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.twoBoxes}>
-              <Image source={moneycoming} style={styles.twoBoxesImage} />
-              {/* Additional content for the first box if needed */}
-            </TouchableOpacity>
+            {fishGames?.map((doc, i) => (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("GameScreen", { id: doc.id });
+                }}
+                key={i}
+                style={styles.twoBoxes}
+              >
+                <Image src={doc.img} style={styles.twoBoxesImage} />
+              </TouchableOpacity>
+            ))}
           </ScrollView>
         </View>
       </View>
@@ -160,7 +155,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 
-
   twoBoxesContainer: {
     //flexDirection: 'row',
     justifyContent: "space-between",
@@ -170,7 +164,7 @@ const styles = StyleSheet.create({
     //flex: 1,
     //aspectRatio: 1, // Maintain the aspect ratio
     backgroundColor: "#e0e0e0",
-    borderRadius: 20,
+    borderRadius: 10,
     marginHorizontal: 5,
     marginVertical: 5,
     //overflow: 'hidden', // Clip the contents inside the box
@@ -181,7 +175,7 @@ const styles = StyleSheet.create({
     height: 150, // Make the image take the full width of the box
     //aspectRatio: 1, // Maintain the aspect ratio of the image
     //resizeMode: 'cover', // Ensure the image does not stretch
-    borderRadius: 15,
+    borderRadius: 10,
   },
 });
 

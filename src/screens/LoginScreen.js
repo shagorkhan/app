@@ -20,6 +20,7 @@ import loginUser from "../apis/loginUser";
 import { useToast } from "native-base";
 import { useAuth } from "../context/AuthProvider";
 import getUser from "../apis/getUser";
+import { storeValue } from "../functions/storage";
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
@@ -32,6 +33,7 @@ const LoginScreen = ({ navigation }) => {
     try {
       showLoader();
       const res = await loginUser(username, password);
+      await storeValue("token",res.data.Access_Token)
       const userRes = await getUser(res.data.Access_Token);
       //console.log(userRes.data);
       setUser(userRes.data)

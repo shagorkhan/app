@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -9,7 +9,7 @@ import { View } from "react-native";
 import Header from "../components/Header";
 import DepositScreen from "../screens/DepositScreen";
 import { useAuth } from "../context/AuthProvider";
-import {getValue } from "../functions/storage";
+import { getValue } from "../functions/storage";
 import getUser from "../apis/getUser";
 import { useLoader } from "../context/LoaderContext";
 import HomeScreenOffline from "../screens/HomeScreenOffline";
@@ -39,22 +39,26 @@ const Tab = createBottomTabNavigator();
 function UserRoutes(props) {
   const { user, setUser } = useAuth();
   const { showLoader, hideLoader } = useLoader();
+
   useEffect(() => {
     getUserInfo();
-  }, [user]);
+  }, []);
   const getUserInfo = async () => {
     showLoader();
     const token = await getValue("token");
+    //console.log(token);
     if (token) {
       const res = await getUser(token);
       setUser(res.data);
+      
       hideLoader();
     } else {
       hideLoader();
     }
   };
-  if(!user){
-    return <HomeScreenOffline {...props}/>
+
+  if (!user) {
+    return <HomeScreenOffline {...props} />;
   }
   return (
     <Tab.Navigator

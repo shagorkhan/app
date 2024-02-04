@@ -13,6 +13,8 @@ import { NativeBaseProvider, Box } from "native-base";
 import { LogBox } from "react-native";
 import { LoaderProvider } from "./src/context/LoaderContext";
 import { AuthProvider } from "./src/context/AuthProvider";
+import gateGames from "./src/apis/getGames";
+import GameScreen from "./src/screens/GameScreen";
 LogBox.ignoreLogs([/SSRProvider/]);
 
 const stack = createStackNavigator();
@@ -22,8 +24,20 @@ function App() {
     getCategory().then((res) => {
       storeData("category", res.data);
     });
-    
+    storeGameData();
   }, []);
+  const storeGameData = async () => {
+    try {
+      const liveRes = await gateGames(1, "live_dealers");
+      storeData("live", liveRes.data);
+      const fishRes = await gateGames(2, "fish");
+      storeData("fish", fishRes.data);
+      const slotRes = await gateGames(3, "novomatic");
+      storeData("slot", slotRes.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <NativeBaseProvider>
@@ -60,6 +74,11 @@ function App() {
                 options={{ headerShown: false }}
                 name="OTP"
                 component={OTP}
+              />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="GameScreen"
+                component={GameScreen}
               />
             </stack.Navigator>
           </NavigationContainer>
