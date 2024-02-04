@@ -31,11 +31,7 @@ const HomeScreenOffline = (props) => {
   const [fishGames, setFishGames] = useState();
   const [slotGames, setSlotGames] = useState();
   useEffect(() => {
-    getData("category").then((d) => {
-      //hideLoader();
-      setCategory(d);
-      //console.log(d)
-    });
+    getAllData()
   }, []);
   const getAllData = async () => {
     showLoader();

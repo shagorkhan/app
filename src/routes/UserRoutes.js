@@ -8,17 +8,14 @@ import { StyleSheet, Text } from "react-native";
 import { View } from "react-native";
 import Header from "../components/Header";
 import DepositScreen from "../screens/DepositScreen";
+import WithdrawScreen from "../screens/WithdrawScreen";
 import { useAuth } from "../context/AuthProvider";
 import { getValue } from "../functions/storage";
 import getUser from "../apis/getUser";
 import { useLoader } from "../context/LoaderContext";
 import HomeScreenOffline from "../screens/HomeScreenOffline";
 
-const WithdrawScreen = () => (
-  <View style={styles.container}>
-    <Text>Withdraw Screen</Text>
-  </View>
-);
+
 
 const ProfileScreen = () => (
   <View style={styles.container}>

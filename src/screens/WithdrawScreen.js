@@ -7,7 +7,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import { color } from 'react-native-elements/dist/helpers';
 const { width, height } = Dimensions.get("window");
 
-const DepositScreen = ({navigation}) => {
+const WithdrawScreen= ({navigation}) => {
   const { user, setUser } = useAuth();
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [selectedAmount, setSelectedAmount] = useState(null);
@@ -27,10 +27,10 @@ const DepositScreen = ({navigation}) => {
   return (
     <ScrollView>
     <View style={styles.container}>
-      <Text style={{fontSize:35, textAlign:'center', marginBottom:15}}>Deposit</Text>
+      <Text style={{fontSize:35, textAlign:'center', marginBottom:15}}>Withdraw</Text>
       <Text style={{fontSize:13, textAlign:'center'}}>With your tasted wallet and explore more</Text>
       <Text style={{fontSize:13, textAlign:'center', marginBottom:25}}>gaming features with our  client area</Text>
-      <Text style={styles.title}>Select Payment Method</Text>
+      <Text style={styles.title}>Select Withdraw Method</Text>
       <View style={{flexDirection:'row', flexWrap:'wrap', gap:10}}>
       <TouchableOpacity
         style={[styles.paymentOption, selectedPayment === 'bKash' && styles.selectedPayment]}
@@ -128,23 +128,11 @@ const DepositScreen = ({navigation}) => {
         placeholder="Amount"
         keyboardType="numeric"
       />
-      <Text style={{fontSize:14}}>Deposit Bonus </Text>
-
-      <Select minWidth="200" accessibilityLabel="Choose Service" placeholder="Choose Service" _selectedItem={{
-        bg: "teal.600",
-        endIcon: <CheckIcon size="5" />
-      }} mt={1} onValueChange={itemValue => {}}>
-          <Select.Item label="No Bonus" value="ux" />
-          <Select.Item label="Web Development" value="web" />
-          <Select.Item label="Cross Platform Development" value="cross" />
-          <Select.Item label="UI Designing" value="ui" />
-          <Select.Item label="Backend Development" value="backend" />
-        </Select>
 
         <TouchableOpacity
-        style={styles.depositButton}
+        style={styles.withdrawButton}
       >
-        <Text style={[styles.paymentText, {color:'white'}]}>Deposit</Text>
+        <Text style={[styles.paymentText, {color:'white'}]}>Withdraw</Text>
       </TouchableOpacity>
 
     </View>
@@ -224,7 +212,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3B82F6',
     borderColor: 'white',
   },
-  depositButton: {
+  withdrawButton: {
     backgroundColor: '#3B82F6',
     padding: 10,
     //marginHorizontal: 30,
@@ -244,4 +232,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DepositScreen;
+export default WithdrawScreen;
