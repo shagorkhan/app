@@ -15,15 +15,7 @@ import getUser from "../apis/getUser";
 import { useLoader } from "../context/LoaderContext";
 import HomeScreenOffline from "../screens/HomeScreenOffline";
 import HistoryRoutes from "./HistoryRoutes";
-
-
-
-const ProfileScreen = () => (
-  <View style={styles.container}>
-    <Text>Profile Screen</Text>
-  </View>
-);
-
+import ProfileScreen from "../screens/ProfileScreen";
 
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
@@ -87,13 +79,13 @@ function UserRoutes(props) {
       />
 
       {/* Deposit tab */}
-      <Tab.Screen name="Deposit" component={DepositScreen} />
+      <Tab.Screen name="Deposit" component={DepositScreen} options={{ headerShown: false }} />
 
       {/* Withdraw tab */}
-      <Tab.Screen name="Withdraw" component={WithdrawScreen} />
+      <Tab.Screen name="Withdraw" component={WithdrawScreen} options={{ headerShown: false }} />
 
       {/* History tab */}
-      <Tab.Screen name="History" component={HistoryRoutes} />
+      <Tab.Screen name="History" component={HistoryRoutes} options={{ headerShown: false }} />
 
       {/* Profile tab */}
       <Tab.Screen name="Profile" component={ProfileScreen} />

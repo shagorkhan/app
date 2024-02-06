@@ -1,12 +1,23 @@
 
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
+import Input from '../components/Input';
 
 const DepositHistory = () => {
   return (
     <View style={styles.container}>
-      <Text>Deposit History</Text>
-      {/* Add your deposit history components here */}
+      <Input 
+          style={{
+            marginTop: 10,
+          }}
+          placeholder={"Search"}
+        />
+        <ScrollView>
+          <View>
+            
+          </View>
+        </ScrollView>
     </View>
   );
 };
@@ -14,8 +25,9 @@ const DepositHistory = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding:10,
+    //justifyContent: 'center',
+    //alignItems: 'center',
   },
 });
 
