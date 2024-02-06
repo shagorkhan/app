@@ -14,6 +14,7 @@ import { getValue } from "../functions/storage";
 import getUser from "../apis/getUser";
 import { useLoader } from "../context/LoaderContext";
 import HomeScreenOffline from "../screens/HomeScreenOffline";
+import HistoryScreen from "../screens/HistoryScreen";
 
 
 
@@ -23,11 +24,7 @@ const ProfileScreen = () => (
   </View>
 );
 
-const HistoryScreen = () => (
-  <View style={styles.container}>
-    <Text>History Screen</Text>
-  </View>
-);
+
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
 

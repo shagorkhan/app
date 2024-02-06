@@ -15,6 +15,7 @@ import { LoaderProvider } from "./src/context/LoaderContext";
 import { AuthProvider } from "./src/context/AuthProvider";
 import gateGames from "./src/apis/getGames";
 import GameScreen from "./src/screens/GameScreen";
+import ChangePassword from "./src/screens/ChangePassword";
 LogBox.ignoreLogs([/SSRProvider/]);
 
 const stack = createStackNavigator();
@@ -79,6 +80,11 @@ function App() {
                 options={{ headerShown: false }}
                 name="GameScreen"
                 component={GameScreen}
+              />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="ChangePass"
+                component={ChangePassword}
               />
             </stack.Navigator>
           </NavigationContainer>
