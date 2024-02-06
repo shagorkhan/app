@@ -32,43 +32,43 @@ const WithdrawScreen= ({navigation}) => {
       <Text style={{fontSize:13, textAlign:'center', marginBottom:25}}>gaming features with our  client area</Text>
       <Text style={styles.title}>Select Withdraw Method</Text>
       <View style={{flexDirection:'row', flexWrap:'wrap', gap:10}}>
-      <TouchableOpacity
-        style={[styles.paymentOption, selectedPayment === 'bKash' && styles.selectedPayment]}
-        onPress={() => handlePaymentSelection('bKash')}
-      >
-        <Image
-            source={{ uri: 'https://seeklogo.com/images/B/bkash-logo-835789094A-seeklogo.com.png' }}
-            style={styles.paymentLogo}
-          />
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.paymentOption, selectedPayment === 'bKash' && styles.selectedPayment]}
+          onPress={() => handlePaymentSelection('bKash')}
+        >
+          <Image
+              source={{ uri: 'https://seeklogo.com/images/B/bkash-logo-835789094A-seeklogo.com.png' }}
+              style={styles.paymentLogo}
+            />
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={[styles.paymentOption, selectedPayment === 'Nagad' && styles.selectedPayment]}
-        onPress={() => handlePaymentSelection('Nagad')}
-      >
-        <Image
-            source={{ uri: 'https://nagad.com.bd/_nuxt/img/new-logo.6e48f4e.png' }}
-            style={styles.paymentLogo}
-          />
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.paymentOption, selectedPayment === 'Nagad' && styles.selectedPayment]}
+          onPress={() => handlePaymentSelection('Nagad')}
+        >
+          <Image
+              source={{ uri: 'https://nagad.com.bd/_nuxt/img/new-logo.6e48f4e.png' }}
+              style={styles.paymentLogo}
+            />
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={[styles.paymentOption, selectedPayment === 'Rocket' && styles.selectedPayment]}
-        onPress={() => handlePaymentSelection('Rocket')}
-      >
-        <Image
-            source={{ uri: 'https://seeklogo.com/images/D/dutch-bangla-rocket-logo-B4D1CC458D-seeklogo.com.png' }}
-            style={styles.paymentLogo}/>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.paymentOption, selectedPayment === 'Rocket' && styles.selectedPayment]}
+          onPress={() => handlePaymentSelection('Rocket')}
+        >
+          <Image
+              source={{ uri: 'https://seeklogo.com/images/D/dutch-bangla-rocket-logo-B4D1CC458D-seeklogo.com.png' }}
+              style={styles.paymentLogo}/>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={[styles.paymentOption, selectedPayment === 'UPay' && styles.selectedPayment]}
-        onPress={() => handlePaymentSelection('UPay')}
-      >
-        <Image
-            source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg3sBaDydxE2z4w90aXRukdF0xFB4zTbASNWI3AGyZiM1SqkPipn8ggq7yvNaWckt36qs&usqp=CAU' }}
-            style={styles.paymentLogo}/>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.paymentOption, selectedPayment === 'UPay' && styles.selectedPayment]}
+          onPress={() => handlePaymentSelection('UPay')}
+        >
+          <Image
+              source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg3sBaDydxE2z4w90aXRukdF0xFB4zTbASNWI3AGyZiM1SqkPipn8ggq7yvNaWckt36qs&usqp=CAU' }}
+              style={styles.paymentLogo}/>
+        </TouchableOpacity>
       </View>
       <Text style={{fontSize:14, marginTop:20, marginBottom:5,}}>Deposit Channel</Text>
       <TouchableOpacity

@@ -14,7 +14,7 @@ import { getValue } from "../functions/storage";
 import getUser from "../apis/getUser";
 import { useLoader } from "../context/LoaderContext";
 import HomeScreenOffline from "../screens/HomeScreenOffline";
-import HistoryScreen from "../screens/HistoryScreen";
+import HistoryRoutes from "./HistoryRoutes";
 
 
 
@@ -93,7 +93,7 @@ function UserRoutes(props) {
       <Tab.Screen name="Withdraw" component={WithdrawScreen} />
 
       {/* History tab */}
-      <Tab.Screen name="History" component={HistoryScreen} />
+      <Tab.Screen name="History" component={HistoryRoutes} />
 
       {/* Profile tab */}
       <Tab.Screen name="Profile" component={ProfileScreen} />
