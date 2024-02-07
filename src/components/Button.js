@@ -14,8 +14,8 @@ export default function Button({buttonText, style, fontSize,onPress}) {
 }
 const styles=StyleSheet.create({
     buttonStyle:{
-        backgroundColor: 'blue', // Blue color
-        padding: 12,
+        backgroundColor: '#3B82F6', // Blue color
+        padding: 8,
         borderRadius: 25,
         alignItems: 'center',
         margin: 10,
