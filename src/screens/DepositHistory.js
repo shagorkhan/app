@@ -7,6 +7,9 @@ import img2 from "../../assets/image13.png";
 import getDepositHistory from "../apis/getDepositHistory";
 import { useLoader } from "../context/LoaderContext";
 import { getValue } from "../functions/storage";
+import { StatusBar } from "expo-status-bar";
+
+
 
 const DepositHistory = () => {
   const { showLoader, hideLoader } = useLoader();
@@ -32,7 +35,7 @@ const DepositHistory = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View  style={styles.container}>
       
       <ScrollView showsVerticalScrollIndicator={false} style={styles.cardContainer}>
       <Input style={styles.search} placeholder="Search..."></Input>

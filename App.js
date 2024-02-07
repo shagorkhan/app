@@ -10,12 +10,13 @@ import UserRoutes from "./src/routes/UserRoutes";
 import getCategory from "./src/apis/getCategory";
 import { getData, storeData } from "./src/functions/storage";
 import { NativeBaseProvider, Box } from "native-base";
-import { LogBox } from "react-native";
+import { LogBox, SafeAreaView } from "react-native";
 import { LoaderProvider } from "./src/context/LoaderContext";
 import { AuthProvider } from "./src/context/AuthProvider";
 import gateGames from "./src/apis/getGames";
 import GameScreen from "./src/screens/GameScreen";
 import ChangePassword from "./src/screens/ChangePassword";
+import ClaimVoucher from "./src/screens/ClaimVoucher";
 LogBox.ignoreLogs([/SSRProvider/]);
 
 const stack = createStackNavigator();
@@ -42,7 +43,8 @@ function App() {
 
   return (
     <NativeBaseProvider>
-      <LoaderProvider>
+     <SafeAreaView style={{flex:1}}>
+     <LoaderProvider>
         <AuthProvider>
           <NavigationContainer>
             <stack.Navigator initialRouteName="HomeScreen">
@@ -86,10 +88,16 @@ function App() {
                 name="ChangePass"
                 component={ChangePassword}
               />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="ClaimVoucher"
+                component={ClaimVoucher}
+              />
             </stack.Navigator>
           </NavigationContainer>
         </AuthProvider>
       </LoaderProvider>
+     </SafeAreaView>
     </NativeBaseProvider>
   );
 }

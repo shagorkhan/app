@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -7,7 +7,11 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { ImageBackground } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { StatusBar } from 'native-base';
+import { StatusBar } from 'expo-status-bar';
+
+
+
+
 
 
 
@@ -20,10 +24,11 @@ const ProfileScreen = ({ navigation }) => {
   };
 
   return (
-    <ImageBackground source={require('../../assets/imagebackground.png')} style={styles.background}>
-      <StatusBar barStyle={"light-content"} backgroundColor={'rgba(64, 123, 255, 0.87)'}>
+   <SafeAreaView style={{flex:1}}>
+     <ImageBackground source={require('../../assets/imagebackground.png')} style={styles.background}>
+      {/* <StatusBar barStyle={"light-content"} backgroundColor={'rgba(64, 123, 255, 0.87)'}>
 
-      </StatusBar>
+      </StatusBar> */}
       <ScrollView>
       <View style={styles.container}>
         <Text style={styles.title}>Profile</Text>
@@ -78,7 +83,7 @@ const ProfileScreen = ({ navigation }) => {
           </View>
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleMenuPress('')} style={styles.menuItem}>
+        <TouchableOpacity onPress={() => handleMenuPress('ClaimVoucher')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}>
             <MaterialIcons name="wallet-giftcard" size={24} color="black" />
             <Text style={{marginLeft:15, fontSize:18}}>Claim Voucher</Text>
@@ -89,6 +94,7 @@ const ProfileScreen = ({ navigation }) => {
       </View>
       </ScrollView>
     </ImageBackground>
+   </SafeAreaView>
   );
 };
 
