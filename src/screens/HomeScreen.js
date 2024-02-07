@@ -55,6 +55,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <ScrollView>
+
       <View style={styles.container}>
         <Swiper style={styles.sliderContainer}>
           {sliderImages.map((image, index) => (
@@ -66,7 +67,7 @@ const HomeScreen = ({ navigation }) => {
         <HomeMenu data={category} />
 
         <View style={styles.twoBoxesContainer}>
-          <Text style={{ fontSize: 18, fontWeight: "bold", marginLeft: 10 }}>
+          <Text style={{ fontSize: 18, fontWeight: "bold", marginLeft: 10, }}>
             Live Games
           </Text>
           <ScrollView horizontal={true}>
