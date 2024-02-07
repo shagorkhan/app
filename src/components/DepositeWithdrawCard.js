@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import img1 from "../../assets/image12.png";
 import img2 from "../../assets/image13.png";
+
 const DepositWithdrawCard = ({tnxId,status,amount,offer,remark,date,icon,walletName}) => {
   return (
     <View
