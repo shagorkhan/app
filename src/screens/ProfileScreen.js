@@ -78,7 +78,7 @@ const ProfileScreen = ({ navigation }) => {
           </View>
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleMenuPress('')} style={styles.menuItem}>
+        <TouchableOpacity onPress={() => handleMenuPress('Rewards')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}> 
             <MaterialCommunityIcons name="gift-outline" size={24} color="black" />
             <Text style={{marginLeft:15, fontSize:18}}>Rewards</Text>
