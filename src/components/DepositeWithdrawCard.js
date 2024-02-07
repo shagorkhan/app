@@ -17,7 +17,7 @@ const DepositWithdrawCard = ({tnxId,status,amount,offer,remark,date,icon,walletN
     >
       <View style={{}}>
         <View>
-          <Text>hi</Text>
+          <Text className="text-red-400">hi</Text>
           <View
             style={{
               display: "flex",
