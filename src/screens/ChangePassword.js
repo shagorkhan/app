@@ -3,12 +3,15 @@ import React from 'react'
 import Input from '../components/Input';
 import Button from '../components/Button';
 import { StatusBar } from 'native-base';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 export default function ChangePassword() {
 
   return (
+    
     <View style={style.container}>
+      <ScrollView>
       <StatusBar backgroundColor={'#D9D9D9'}></StatusBar>
       <Text style={{fontSize:35,alignSelf:'center', marginTop:60}}>Change</Text>
       <Text style={{fontSize:35,alignSelf:'center'}}>Password</Text>
@@ -42,8 +45,10 @@ export default function ChangePassword() {
           fontSize={20}
           buttonText="Done"
         />
+        </ScrollView>
 
     </View>
+    
   )
 }
 const style= StyleSheet.create({
