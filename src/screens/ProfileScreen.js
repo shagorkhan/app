@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import { SimpleLineIcons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 
 
@@ -21,42 +23,44 @@ const ProfileScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Profile</Text>
+      <Text style={{justifyContent:'space-between',}}>Md Sazzad Hossain <Feather name="edit" size={24} color="black" /></Text>
       
       <TouchableOpacity onPress={() => handleMenuPress('Edit Profile')} style={styles.menuItem}>
         <MaterialCommunityIcons name="key-outline" size={24} color="black" />
         <Text>Change Password</Text>
-        <AntDesign name="arrowright" size={24} color="black" />
+        <SimpleLineIcons name="arrow-right" size={24} color="black" />
       </TouchableOpacity>
       
       <TouchableOpacity onPress={() => handleMenuPress('Change Password')} style={styles.menuItem}>
         <MaterialCommunityIcons name="history" size={24} color="black" />
         <Text>Bet History</Text>
-        <AntDesign name="arrowright" size={24} color="black" />
+        <SimpleLineIcons name="arrow-right" size={24} color="black" />
       </TouchableOpacity>
       
       <TouchableOpacity onPress={() => handleMenuPress('Logout')} style={styles.menuItem}>
         <MaterialCommunityIcons name="history" size={24} color="black" />   
         <Text>Turnover History</Text>
-        <AntDesign name="arrowright" size={24} color="black" />
+        <SimpleLineIcons name="arrow-right" size={24} color="black" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => handleMenuPress('Logout')} style={styles.menuItem}>
         <MaterialCommunityIcons name="bank" size={24} color="black" />
         <Text>Bank details</Text>
-        <AntDesign name="arrowright" size={24} color="black" />
+        <SimpleLineIcons name="arrow-right" size={24} color="black" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => handleMenuPress('Logout')} style={styles.menuItem}>
         <MaterialIcons name="notifications-none" size={24} color="black" />
         <Text>Notifications</Text>
-        <AntDesign name="arrowright" size={24} color="black" />
+        <SimpleLineIcons name="arrow-right" size={24} color="black" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => handleMenuPress('Logout')} style={styles.menuItem}>
         <MaterialCommunityIcons name="gift-outline" size={24} color="black" />
         <Text>Rewards</Text>
-        <AntDesign name="arrowright" size={24} color="black" />
+        <SimpleLineIcons name="arrow-right" size={24} color="black" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => handleMenuPress('Logout')} style={styles.menuItem}>
+        <MaterialIcons name="wallet-giftcard" size={24} color="black" />
         <Text>Claim Voucher</Text>
-        <AntDesign name="arrowright" size={24} color="black" />
+        <SimpleLineIcons name="arrow-right" size={24} color="black" />
       </TouchableOpacity>
     </View>
   );
@@ -72,6 +76,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     marginBottom: 20,
+    alignSelf:'flex-end',
   },
   menuItem: {
     flexDirection:'row',
@@ -81,6 +86,8 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 5,
     marginBottom: 10,
+    justifyContent: 'space-between',
+    //allignItems: 'center',
   },
 });
 
