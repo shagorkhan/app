@@ -55,6 +55,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <ScrollView>
+
       <View style={styles.container}>
         <Swiper style={styles.sliderContainer}>
           {sliderImages.map((image, index) => (
