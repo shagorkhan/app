@@ -8,36 +8,38 @@ import { Feather } from '@expo/vector-icons';
 import { ImageBackground } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-
-
-
-
-
-
-
+import { useAuth } from '../context/AuthProvider';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const ProfileScreen = ({ navigation }) => {
+  const inset = useSafeAreaInsets();
+  const {user}=useAuth()
   const handleMenuPress = (menu) => {
     
       navigation.navigate(menu);
     
   };
+ // console.log(user)
 
   return (
-   <SafeAreaView style={{flex:1}}>
+   <SafeAreaView style={{flex:1,marginTop:inset.top}}>
+    <StatusBar style={"light"} backgroundColor={'rgba(64, 123, 255, 0.87)'}/>
      <ImageBackground source={require('../../assets/imagebackground.png')} style={styles.background}>
-      {/* <StatusBar barStyle={"light-content"} backgroundColor={'rgba(64, 123, 255, 0.87)'}>
+      {/* 
 
       </StatusBar> */}
       <ScrollView>
       <View style={styles.container}>
         <Text style={styles.title}>Profile</Text>
           <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-            <Text style={{color:'white', fontSize:16}}>Md Sazzad Hossain</Text> 
-            <TouchableOpacity><Feather name="edit" size={20} color="white"/></TouchableOpacity>
+            <Text style={{color:'white', fontSize:16}}>{user?.name}</Text> 
+            <TouchableOpacity onPress={()=>{
+              navigation?.navigate("EditProfile")
+            }}><Feather name="edit" size={20} color="white"/></TouchableOpacity>
           </View>
-        <Text style={{color:'white', fontSize:15}}>sazzad9911</Text>
-        <Text style={{color:'white'}}>+8801761143991</Text>
+        <Text style={{color:'white', fontSize:15}}>{user?.username}</Text>
+        <Text style={{color:'white'}}>+{user?.phone}</Text>
+        <Text style={{color:'white',fontWeight:"700"}}>{user?.balance.toFixed(2)}BDT</Text>
         <Text style={{color:'white',fontSize:18,marginTop:30,marginBottom:15,borderBottomWidth: 1.5, borderColor: '#FFFFFF',}}>Menus</Text>
         <TouchableOpacity onPress={() => handleMenuPress('ChangePass')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}>

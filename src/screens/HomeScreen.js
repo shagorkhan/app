@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ScrollView,
   Dimensions,
+  StatusBar,
 } from "react-native";
 
 import Swiper from "react-native-swiper";
@@ -17,6 +18,7 @@ import image4 from "../../assets/image4.jpg";
 import HomeMenu from "../components/HomeMenu";
 import { getData } from "../functions/storage";
 import { useLoader } from "../context/LoaderContext";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 // Get the device screen dimensions
 const { width, height } = Dimensions.get("window");
@@ -27,6 +29,7 @@ const HomeScreen = ({ navigation }) => {
   const [category, setCategory] = useState();
   const [liveGames, setLiveGames] = useState();
   const [fishGames, setFishGames] = useState();
+  const inset=useSafeAreaInsets()
   const [slotGames, setSlotGames] = useState();
 
   useEffect(() => {
@@ -54,8 +57,8 @@ const HomeScreen = ({ navigation }) => {
   }
 
   return (
-    <ScrollView>
-
+    <ScrollView >
+     
       <View style={styles.container}>
         <Swiper style={styles.sliderContainer}>
           {sliderImages.map((image, index) => (
@@ -67,7 +70,7 @@ const HomeScreen = ({ navigation }) => {
         <HomeMenu data={category} />
 
         <View style={styles.twoBoxesContainer}>
-          <Text style={{ fontSize: 18, fontWeight: "bold", marginLeft: 10, }}>
+          <Text style={{ fontSize: 18, fontWeight: "bold", marginLeft: 10 }}>
             Live Games
           </Text>
           <ScrollView horizontal={true}>

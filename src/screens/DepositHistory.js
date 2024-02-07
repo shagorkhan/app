@@ -8,12 +8,14 @@ import getDepositHistory from "../apis/getDepositHistory";
 import { useLoader } from "../context/LoaderContext";
 import { getValue } from "../functions/storage";
 import { StatusBar } from "expo-status-bar";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 
 
 const DepositHistory = () => {
   const { showLoader, hideLoader } = useLoader();
   const [data,setData]=useState([])
+  const inset=useSafeAreaInsets()
   useEffect(() => {
     const loadDeposit = async () => {
       showLoader();
@@ -35,8 +37,8 @@ const DepositHistory = () => {
   }, []);
 
   return (
-    <View  style={styles.container}>
-      
+    <View  style={[styles.container,{marginTop:inset?.top}]}>
+      <StatusBar style={"dark"} backgroundColor={""} />
       <ScrollView showsVerticalScrollIndicator={false} style={styles.cardContainer}>
       <Input style={styles.search} placeholder="Search..."></Input>
         {

@@ -17,6 +17,7 @@ import gateGames from "./src/apis/getGames";
 import GameScreen from "./src/screens/GameScreen";
 import ChangePassword from "./src/screens/ChangePassword";
 import ClaimVoucher from "./src/screens/ClaimVoucher";
+import EditProfile from "./src/screens/EditProfile";
 LogBox.ignoreLogs([/SSRProvider/]);
 
 const stack = createStackNavigator();
@@ -92,6 +93,11 @@ function App() {
                 options={{ headerShown: false }}
                 name="ClaimVoucher"
                 component={ClaimVoucher}
+              />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="EditProfile"
+                component={EditProfile}
               />
             </stack.Navigator>
           </NavigationContainer>
