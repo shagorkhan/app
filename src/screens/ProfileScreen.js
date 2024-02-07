@@ -6,23 +6,25 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { ImageBackground } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { StatusBar } from 'native-base';
 
 
 
 
 const ProfileScreen = ({ navigation }) => {
   const handleMenuPress = (menu) => {
-    // Navigate or perform actions based on the selected menu
-    // For example:
-    if (menu === 'Edit Profile') {
-      navigation.navigate('EditProfile');
-    } else if (menu === 'Logout') {
-      // Perform logout logic
-    }
+    
+      navigation.navigate(menu);
+    
   };
 
   return (
     <ImageBackground source={require('../../assets/imagebackground.png')} style={styles.background}>
+      <StatusBar barStyle={"light-content"} backgroundColor={'rgba(64, 123, 255, 0.87)'}>
+
+      </StatusBar>
+      <ScrollView>
       <View style={styles.container}>
         <Text style={styles.title}>Profile</Text>
           <View style={{flexDirection:'row',justifyContent:'space-between'}}>
@@ -32,7 +34,7 @@ const ProfileScreen = ({ navigation }) => {
         <Text style={{color:'white', fontSize:15}}>sazzad9911</Text>
         <Text style={{color:'white'}}>+8801761143991</Text>
         <Text style={{color:'white',fontSize:18,marginTop:30,marginBottom:15,borderBottomWidth: 1.5, borderColor: '#FFFFFF',}}>Menus</Text>
-        <TouchableOpacity onPress={() => handleMenuPress('Edit Profile')} style={styles.menuItem}>
+        <TouchableOpacity onPress={() => handleMenuPress('ChangePass')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}>
             <MaterialCommunityIcons name="key-outline" size={24} color="black" />
             <Text style={{marginLeft:15, fontSize:18}}>Change Password</Text>
@@ -40,7 +42,7 @@ const ProfileScreen = ({ navigation }) => {
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>
         
-        <TouchableOpacity onPress={() => handleMenuPress('Change Password')} style={styles.menuItem}>
+        <TouchableOpacity onPress={() => handleMenuPress('')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}>
             <MaterialCommunityIcons name="history" size={24} color="black" />
             <Text style={{marginLeft:15, fontSize:18}}>Bet History</Text>
@@ -48,42 +50,44 @@ const ProfileScreen = ({ navigation }) => {
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>
         
-        <TouchableOpacity onPress={() => handleMenuPress('Logout')} style={styles.menuItem}>
+        <TouchableOpacity onPress={() => handleMenuPress('')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}>
             <MaterialCommunityIcons name="history" size={24} color="black" />   
             <Text style={{marginLeft:15, fontSize:18}}>Turnover History</Text>
           </View>
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleMenuPress('Logout')} style={styles.menuItem}>
+        <TouchableOpacity onPress={() => handleMenuPress('')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}>
             <MaterialCommunityIcons name="bank" size={24} color="black" />
             <Text style={{marginLeft:15, fontSize:18}}>Bank details</Text>
           </View>
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleMenuPress('Logout')} style={styles.menuItem}>
+        <TouchableOpacity onPress={() => handleMenuPress('')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}>
             <MaterialIcons name="notifications-none" size={24} color="black" />
             <Text style={{marginLeft:15, fontSize:18}}>Notifications</Text>
           </View>
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleMenuPress('Logout')} style={styles.menuItem}>
+        <TouchableOpacity onPress={() => handleMenuPress('')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}> 
             <MaterialCommunityIcons name="gift-outline" size={24} color="black" />
             <Text style={{marginLeft:15, fontSize:18}}>Rewards</Text>
           </View>
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleMenuPress('Logout')} style={styles.menuItem}>
+        <TouchableOpacity onPress={() => handleMenuPress('')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}>
             <MaterialIcons name="wallet-giftcard" size={24} color="black" />
             <Text style={{marginLeft:15, fontSize:18}}>Claim Voucher</Text>
           </View>
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>
+        
       </View>
+      </ScrollView>
     </ImageBackground>
   );
 };

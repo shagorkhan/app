@@ -88,7 +88,7 @@ function UserRoutes(props) {
       <Tab.Screen name="History" component={HistoryRoutes} options={{ headerShown: false }} />
 
       {/* Profile tab */}
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
     </Tab.Navigator>
   );
 }
