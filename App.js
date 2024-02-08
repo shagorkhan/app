@@ -89,7 +89,7 @@ function App() {
                   component={GameScreen}
                 />
                 <stack.Screen
-                  options={{ headerShown: false }}
+                  options={{ header: (props) => <BackButton {...props} /> }}
                   name="ChangePass"
                   component={ChangePassword}
                 />
@@ -114,7 +114,7 @@ function App() {
                   component={BonusHistory}
                 />
                 <stack.Screen
-                  options={{ headerShown: false }}
+                  options={{ header: (props) => <BackButton {...props} /> }}
                   name="BankDetails"
                   component={BankDetails}
                 />
