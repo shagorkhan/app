@@ -37,8 +37,8 @@ const DepositHistory = () => {
   }, []);
 
   return (
-    <View  style={[styles.container,{marginTop:inset?.top}]}>
-      <StatusBar style={"dark"} backgroundColor={""} />
+    <View  style={styles.container}>
+      {/* <StatusBar style={"dark"} backgroundColor={""} /> */}
       <ScrollView showsVerticalScrollIndicator={false} style={styles.cardContainer}>
       <Input style={styles.search} placeholder="Search..."></Input>
         {
