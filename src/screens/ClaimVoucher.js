@@ -42,7 +42,6 @@ export default function ClaimVoucher({ navigation }) {
 
   return (
     <View style={style.container}>
-      <BackButton navigation={navigation}></BackButton>
       <Text
         style={{
           fontSize: 46,

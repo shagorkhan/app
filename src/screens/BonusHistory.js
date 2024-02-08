@@ -2,18 +2,14 @@ import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { useLoader } from "../context/LoaderContext";
 import { getValue } from "../functions/storage";
-import { StatusBar } from "expo-status-bar";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import DepositBonusCard from "../components/RewardBonusCard";
-import BackButton from "../components/BackButton";
-import getRewards from "../apis/getRewards";
+import getBonusHistory from "../apis/getBonusHistory";
 
 
 
-const Rewards = ({navigation}) => {
+const BonusHistory = () => {
   const { showLoader, hideLoader } = useLoader();
   const [data,setData]=useState([])
-  const inset=useSafeAreaInsets()
 
   useEffect(() => {
     const loadRewards = async () => {
@@ -25,7 +21,7 @@ const Rewards = ({navigation}) => {
           hideLoader();
           return navigation.goBack();
         }
-        const res = await getRewards(token);
+        const res = await getBonusHistory(token);
         setData(res.data);
         hideLoader();
       } catch (error) {
@@ -63,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Rewards;
+export default BonusHistory;
