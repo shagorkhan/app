@@ -64,7 +64,7 @@ const ProfileScreen = ({ navigation }) => {
           </View>
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleMenuPress('')} style={styles.menuItem}>
+        <TouchableOpacity onPress={() => handleMenuPress('BankDetails')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}>
             <MaterialCommunityIcons name="bank" size={24} color="black" />
             <Text style={{marginLeft:15, fontSize:18}}>Bank details</Text>
@@ -89,6 +89,13 @@ const ProfileScreen = ({ navigation }) => {
           <View style={{flexDirection:'row'}}>
             <MaterialIcons name="wallet-giftcard" size={24} color="black" />
             <Text style={{marginLeft:15, fontSize:18}}>Claim Voucher</Text>
+          </View>
+          <SimpleLineIcons name="arrow-right" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleMenuPress('')} style={styles.menuItem}>
+          <View style={{flexDirection:'row'}}>
+           <AntDesign name="gift" size={24} color="black" />
+            <Text style={{marginLeft:15, fontSize:18}}>Bonus</Text>
           </View>
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>

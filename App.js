@@ -19,6 +19,7 @@ import ChangePassword from "./src/screens/ChangePassword";
 import ClaimVoucher from "./src/screens/ClaimVoucher";
 import EditProfile from "./src/screens/EditProfile";
 import Rewards from "./src/screens/Rewards";
+import BankDetails from "./src/screens/BankDetails";
 LogBox.ignoreLogs([/SSRProvider/]);
 
 const stack = createStackNavigator();
@@ -104,6 +105,11 @@ function App() {
                 options={{ headerShown: false }}
                 name="Rewards"
                 component={Rewards}
+              />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="BankDetails"
+                component={BankDetails}
               />
             </stack.Navigator>
           </NavigationContainer>
