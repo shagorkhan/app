@@ -10,6 +10,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { useAuth } from '../context/AuthProvider';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import {TurnoverRoutes} from '../routes/TurnoverRoutes';
 
 const ProfileScreen = ({ navigation }) => {
   const inset = useSafeAreaInsets();
@@ -57,7 +58,7 @@ const ProfileScreen = ({ navigation }) => {
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>
         
-        <TouchableOpacity onPress={() => handleMenuPress('')} style={styles.menuItem}>
+        <TouchableOpacity onPress={() => handleMenuPress('TurnoverRoutes')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}>
             <MaterialCommunityIcons name="history" size={24} color="black" />   
             <Text style={{marginLeft:15, fontSize:18}}>Turnover History</Text>

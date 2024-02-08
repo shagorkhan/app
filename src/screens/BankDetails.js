@@ -18,7 +18,7 @@ const BankDetails = ({navigation}) => {
   };
 
   //console.log(user)
-  if(!user){
+  if(!user){ 
     navigation?.navigate("Login")
   }
 

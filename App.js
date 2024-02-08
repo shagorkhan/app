@@ -22,6 +22,7 @@ import Rewards from "./src/screens/Rewards";
 import BankDetails from "./src/screens/BankDetails";
 import BackButton from "./src/components/BackButton";
 import BonusHistory from "./src/screens/BonusHistory";
+import TurnoverRoutes from "./src/routes/TurnoverRoutes";
 LogBox.ignoreLogs([/SSRProvider/]);
 
 const stack = createStackNavigator();
@@ -117,6 +118,11 @@ function App() {
                   options={{ header: (props) => <BackButton {...props} /> }}
                   name="BankDetails"
                   component={BankDetails}
+                />
+                <stack.Screen
+                  options={{ header: (props) => <BackButton {...props} /> }}
+                  name="TurnoverRoutes"
+                  component={TurnoverRoutes}
                 />
               </stack.Navigator>
             </NavigationContainer>
