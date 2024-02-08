@@ -4,9 +4,9 @@ import { useLoader } from "../context/LoaderContext";
 import { getValue } from "../functions/storage";
 import { StatusBar } from "expo-status-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import DepositWithdrawCard from "../components/DepositeWithdrawCard";
 import DepositBonusCard from "../components/RewardBonusCard";
 import BackButton from "../components/BackButton";
+import getRewards from "../apis/getRewards";
 
 
 
@@ -32,7 +32,7 @@ const Rewards = ({navigation}) => {
         console.error(error);
       }
     };
-   // loadRewards();
+   loadRewards();
   }, []);
 
   return (
@@ -40,38 +40,15 @@ const Rewards = ({navigation}) => {
       <StatusBar style={"dark"} backgroundColor={""} />
       <BackButton navigation={navigation}></BackButton>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.cardContainer}>
-        {/* {
+        {
           data?.map((d,i)=><DepositBonusCard
           key={i}
-          bonusID='jshguyg'
-          date="hggdhj dhsdh"
-          amount='10'
+          bonusID={d._id}
+          date={d.date}
+          amount={d.amount}
         ></DepositBonusCard>)
-        } */}
-        <DepositBonusCard
-         
-          bonusID='jshguyg'
-          date="hggdhj dhsdh"
-          amount='10'
-        ></DepositBonusCard>
-        <DepositBonusCard
-         
-          bonusID='jshguyg'
-          date="hggdhj dhsdh"
-          amount='10'
-        ></DepositBonusCard>
-        <DepositBonusCard
-         
-          bonusID='jshguyg'
-          date="hggdhj dhsdh"
-          amount='10'
-        ></DepositBonusCard>
-        <DepositBonusCard
-         
-          bonusID='jshguyg'
-          date="hggdhj dhsdh"
-          amount='10'
-        ></DepositBonusCard>
+        }
+        
       </ScrollView>
     </View>
   );
