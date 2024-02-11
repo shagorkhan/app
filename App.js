@@ -49,86 +49,66 @@ function App() {
 
   return (
     <NativeBaseProvider>
-      <SafeAreaView style={{ flex: 1 }}>
-        <LoaderProvider>
-          <AuthProvider>
-            <NavigationContainer>
-              <stack.Navigator initialRouteName="HomeScreen">
-                <stack.Screen
-                  options={{ headerShown: false }}
-                  name="HomeScreen"
-                  component={UserRoutes}
-                />
-                <stack.Screen
-                  options={{ headerShown: false }}
-                  name="Login"
-                  component={LoginScreen}
-                />
-                <stack.Screen
-                  options={{ headerShown: false }}
-                  name="Register1"
-                  component={RegisterScreen1}
-                />
-                <stack.Screen
-                  options={{ headerShown: false }}
-                  name="Register2"
-                  component={RegisterScreen2}
-                />
-                <stack.Screen
-                  options={{ headerShown: false }}
-                  name="ResetPassword"
-                  component={ResetPassword}
-                />
-                <stack.Screen
-                  options={{ headerShown: false }}
-                  name="OTP"
-                  component={OTP}
-                />
-                <stack.Screen
-                  options={{ headerShown: false }}
-                  name="GameScreen"
-                  component={GameScreen}
-                />
-                <stack.Screen
-                  options={{ header: (props) => <BackButton {...props} /> }}
-                  name="ChangePass"
-                  component={ChangePassword}
-                />
-                <stack.Screen
-                  options={{ header: (props) => <BackButton {...props} /> }}
-                  name="ClaimVoucher"
-                  component={ClaimVoucher}
-                />
-                <stack.Screen
-                  options={{ headerShown: false }}
-                  name="EditProfile"
-                  component={EditProfile}
-                />
-                <stack.Screen
-                  options={{ header: (props) => <BackButton {...props} /> }}
-                  name="Rewards"
-                  component={Rewards}
-                />
-                <stack.Screen
-                  options={{ header: (props) => <BackButton {...props} /> }}
-                  name="BonusHistory"
-                  component={BonusHistory}
-                />
-                <stack.Screen
-                  options={{ header: (props) => <BackButton {...props} /> }}
-                  name="BankDetails"
-                  component={BankDetails}
-                />
-                <stack.Screen
-                  options={{ header: (props) => <BackButton {...props} /> }}
-                  name="TurnoverRoutes"
-                  component={TurnoverRoutes}
-                />
-              </stack.Navigator>
-            </NavigationContainer>
-          </AuthProvider>
-        </LoaderProvider>
-      </SafeAreaView>
+     <SafeAreaView style={{flex:1}}>
+     <LoaderProvider>
+        <AuthProvider>
+          <NavigationContainer>
+            <stack.Navigator initialRouteName="HomeScreen">
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="HomeScreen"
+                component={UserRoutes}
+              />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="Login"
+                component={LoginScreen}
+              />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="Register1"
+                component={RegisterScreen1}
+              />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="Register2"
+                component={RegisterScreen2}
+              />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="ResetPassword"
+                component={ResetPassword}
+              />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="OTP"
+                component={OTP}
+              />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="GameScreen"
+                component={GameScreen}
+              />
+              <stack.Screen 
+                options={{ header:(p) }}
+                name="ChangePass"
+                component={ChangePassword}
+              />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="ClaimVoucher"
+                component={ClaimVoucher}
+              />
+              <stack.Screen
+                options={{ headerShown: false }}
+                name="EditProfile"
+                component={EditProfile}
+              />
+            </stack.Navigator>
+          </NavigationContainer>
+        </AuthProvider>
+      </LoaderProvider>
+     </SafeAreaView>
     </NativeBaseProvider>
   );
 }
