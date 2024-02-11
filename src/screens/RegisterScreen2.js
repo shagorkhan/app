@@ -9,12 +9,14 @@ import {
   backgroundColor,
   ScrollView,
   KeyboardAvoidingView,
+  Dimensions,
 } from "react-native";
 import Logo from "../../assets/logo.svg";
 import { AntDesign } from "@expo/vector-icons";
 import Input from "../components/Input";
 import { FontAwesome } from '@expo/vector-icons';
 import Button from "../components/Button";
+const { width, height } = Dimensions.get("window");
 
 const RegisterScreen2 = ({navigation}) => {
   //const [username, setUsername] = useState("");
@@ -34,34 +36,38 @@ const RegisterScreen2 = ({navigation}) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <KeyboardAvoidingView style={styles.container}>
         <Logo height={300} width={300} />
         <Text style={styles.headline}>Register Now</Text>
         <Input style={{
           marginTop: 45,
+          width:width-40
         }} placeholder={"Username"} icon={<FontAwesome name="user-circle-o" size={24} color="#3B82F6" />}/>
         <Input style={{
           marginTop: 30,
+          width:width-40
         }} placeholder={"Full Name"} icon={<FontAwesome name="user" size={24} color="#407BFF" />}/>
         <Input style={{
           marginTop: 30,
+          width:width-40
         }} placeholder={"Password"} icon={<AntDesign name="key" size={24} color="#3B82F6" />}/>
         <Input style={{
           marginTop: 30,
+          width:width-40
         }} placeholder={"Confirm Password"} icon={<AntDesign name="key" size={24} color="#3B82F6" />}/>
 
-      <Button style={{marginTop: 45}} fontSize={20} buttonText="Sign Up"/>
+      <Button style={{marginTop: 45,width:width-40}} fontSize={20} buttonText="Sign Up"/>
 
       <View style={styles.line} />
 
       <Text style={{
         fontSize: 20,
-        width: '90%',
-        marginTop: 10,
+        width:width-40,
+        marginVertical: 10,
       }}>Already have an Account ?</Text>
 
-      <Button style={{backgroundColor: 'black'}} fontSize={20} buttonText="Login" onPress={handleRegisterButtonPress}/>
+      <Button style={{backgroundColor: 'black',width:width-40}} fontSize={20} buttonText="Login" onPress={handleRegisterButtonPress}/>
       </KeyboardAvoidingView>
     </ScrollView>
   );
@@ -80,9 +86,10 @@ const styles = StyleSheet.create({
   },
   line: {
     borderColor: 'black',
-    width: '90%', // Adjust the width as needed
+   
     borderBottomWidth: 2, // Adjust the thickness as needed
     marginTop: 40,
+    width:width-40
   },
   
 });

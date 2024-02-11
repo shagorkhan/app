@@ -39,7 +39,9 @@ function UserRoutes(props) {
       
       hideLoader();
     } else {
+      //props.navigation.navigate("Login")
       hideLoader();
+      console.log("User not found")
     }
   };
 

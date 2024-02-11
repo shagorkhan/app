@@ -2,10 +2,10 @@ import React from 'react'
 import { View, TextInput, StyleSheet } from 'react-native'
 
 
-export default function Input({placeholder,style,icon,onChangeText,secureTextEntry,value}) {
+export default function Input({placeholder,style,icon,onChangeText,secureTextEntry,value,keyboardType}) {
   return (
     <View style={[styles.input,style]}>
-      {icon}
+      {icon?icon:null}
         <TextInput value={value} onChangeText={onChangeText}
         style={{
           fontSize:16,
@@ -14,6 +14,7 @@ export default function Input({placeholder,style,icon,onChangeText,secureTextEnt
         }} 
         secureTextEntry={secureTextEntry}
         placeholder={placeholder}
+        keyboardType={keyboardType}
         />
       
     </View>
@@ -29,6 +30,7 @@ const styles=StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 5,
     flexDirection:'row',
+    alignItems:"center"
 
   }
 })

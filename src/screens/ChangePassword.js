@@ -54,7 +54,6 @@ export default function ChangePassword() {
 const style= StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor:'#D9D9D9',
         padding:15,
     }
 

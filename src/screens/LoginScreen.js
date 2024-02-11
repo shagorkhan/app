@@ -9,6 +9,7 @@ import {
   backgroundColor,
   ScrollView,
   KeyboardAvoidingView,
+  Dimensions,
 } from "react-native";
 import Logo from "../../assets/logo.svg";
 import { AntDesign } from "@expo/vector-icons";
@@ -21,6 +22,7 @@ import { useToast } from "native-base";
 import { useAuth } from "../context/AuthProvider";
 import getUser from "../apis/getUser";
 import { storeValue } from "../functions/storage";
+const {width,height}=Dimensions.get("window")
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
@@ -56,17 +58,19 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <KeyboardAvoidingView style={styles.container}>
         <Logo height={300} width={300} />
         <Text style={styles.headline}>Login Form</Text>
         <Text style={styles.details}>
           Login here to get extra gaming features {"\n"} and more never ended
         </Text>
+        
         <Input value={username}
           onChangeText={setUsername}
           style={{
             marginTop: 45,
+            width:width-50
           }}
           placeholder={"Username"}
           icon={<FontAwesome name="user-circle-o" size={24} color="#3B82F6" />}
@@ -75,6 +79,7 @@ const LoginScreen = ({ navigation }) => {
           onChangeText={setPassword}
           style={{
             marginTop: 30,
+            width:width-50
           }}
           placeholder={"Password"}
           secureTextEntry={true}
@@ -83,7 +88,7 @@ const LoginScreen = ({ navigation }) => {
 
         <Button
           onPress={handlePress}
-          style={{ marginTop: 45 }}
+          style={{ marginTop: 45 , width:width-50}}
           fontSize={20}
           buttonText="Login"
         />
@@ -93,15 +98,15 @@ const LoginScreen = ({ navigation }) => {
         <Text
           style={{
             fontSize: 20,
-            width: "90%",
-            marginTop: 10,
+            width:  width-50,
+            marginVertical:10
           }}
         >
           Don't have an Account ?
         </Text>
 
         <Button
-          style={{ backgroundColor: "black" }}
+          style={{ backgroundColor: "black" , width:width-50}}
           fontSize={20}
           buttonText="Sign Up"
           onPress={handleRegisterButtonPress}
@@ -113,10 +118,10 @@ const LoginScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: "center",
     paddingHorizontal: 90,
     paddingVertical: 20,
+    
   },
   headline: {
     fontSize: 25,
@@ -126,12 +131,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 10,
     fontWeight: "300",
+    width:  width-50,
   },
   line: {
     borderColor: "black",
     width: "90%", // Adjust the width as needed
     borderBottomWidth: 2, // Adjust the thickness as needed
     marginTop: 40,
+    width:width-50
   },
 });
 

@@ -19,6 +19,7 @@ import HomeMenu from "../components/HomeMenu";
 import { getData } from "../functions/storage";
 import { useLoader } from "../context/LoaderContext";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useAuth } from "../context/AuthProvider";
 
 // Get the device screen dimensions
 const { width, height } = Dimensions.get("window");
@@ -31,6 +32,7 @@ const HomeScreen = ({ navigation }) => {
   const [fishGames, setFishGames] = useState();
   const inset=useSafeAreaInsets()
   const [slotGames, setSlotGames] = useState();
+  const { user, setUser } = useAuth();
 
   useEffect(() => {
     getAllData();

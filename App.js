@@ -90,12 +90,12 @@ function App() {
                 component={GameScreen}
               />
               <stack.Screen 
-                options={{ header:(p) }}
+                 options={{ header:props=><BackButton {...props}/> }}
                 name="ChangePass"
                 component={ChangePassword}
               />
               <stack.Screen
-                options={{ headerShown: false }}
+                options={{ header:props=><BackButton {...props}/> }}
                 name="ClaimVoucher"
                 component={ClaimVoucher}
               />

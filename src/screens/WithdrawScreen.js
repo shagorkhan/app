@@ -1,11 +1,11 @@
 //import { forHorizontalIOS } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/CardStyleInterpolators';
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView, Dimensions } from 'react-native';
-import { Select, Box, CheckIcon, Center, NativeBaseProvider } from "native-base";
+import { Select, Box, CheckIcon, Center, NativeBaseProvider, StatusBar } from "native-base";
 import { useAuth } from '../context/AuthProvider';
 import { TextInput } from 'react-native-gesture-handler';
 import { color } from 'react-native-elements/dist/helpers';
-import {StatusBar} from "expo-status-bar"
+
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 const { width, height } = Dimensions.get("window");
 
@@ -29,7 +29,7 @@ const WithdrawScreen= ({navigation}) => {
 
   return (
     <ScrollView style={{paddingTop:inset.top}}>
-       <StatusBar style={"dark"} backgroundColor={""} />
+  <StatusBar barStyle={"dark-content"} backgroundColor={"transparent"} />
     <View style={styles.container}>
       <Text style={{fontSize:35, textAlign:'center', marginBottom:15}}>Withdraw</Text>
       <Text style={{fontSize:13, textAlign:'center'}}>With your tasted wallet and explore more</Text>
