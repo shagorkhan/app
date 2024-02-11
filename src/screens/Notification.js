@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { useLoader } from "../context/LoaderContext";
 import { getValue } from "../functions/storage";
-import DepositBonusCard from "../components/RewardBonusCard";
-import getRewards from "../apis/getRewards";
+import NotificationCard from "../components/NotificationCard";
+import getUserNotification from "../apis/getNotification";
 
 
 
-const Rewards = ({navigation}) => {
+const Notification = ({navigation}) => {
   const { showLoader, hideLoader } = useLoader();
   const [data,setData]=useState([])
 
   useEffect(() => {
-    const loadRewards = async () => {
+    const loadNotifications = async () => {
       
       try {
         const token = await getValue("token");
@@ -21,7 +21,7 @@ const Rewards = ({navigation}) => {
           hideLoader();
           return navigation.goBack();
         }
-        const res = await getRewards(token);
+        const res = await getUserNotification(token);
         setData(res.data);
         hideLoader();
       } catch (error) {
@@ -29,19 +29,20 @@ const Rewards = ({navigation}) => {
         console.error(error);
       }
     };
-   loadRewards();
+   loadNotifications();
   }, []);
 
   return (
     <View  style={[styles.container]}>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.cardContainer}>
         {
-          data?.map((d,i)=><DepositBonusCard
+          data?.map((d,i)=><NotificationCard
           key={i}
-          bonusID={d._id}
+          title={d.title}
+          description={d.details}
           date={d.date}
-          amount={d.amount}
-        ></DepositBonusCard>)
+          read={d.read}
+        ></NotificationCard>)
         }
         
       </ScrollView>
@@ -59,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Rewards;
+export default Notification;

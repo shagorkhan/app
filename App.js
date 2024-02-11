@@ -23,6 +23,7 @@ import BankDetails from "./src/screens/BankDetails";
 import BackButton from "./src/components/BackButton";
 import BonusHistory from "./src/screens/BonusHistory";
 import TurnoverRoutes from "./src/routes/TurnoverRoutes";
+import Notification from "./src/screens/Notification";
 LogBox.ignoreLogs([/SSRProvider/]);
 
 const stack = createStackNavigator();
@@ -115,9 +116,9 @@ function App() {
                 component={EditProfile}
               />
               <stack.Screen
-                options={{ header:props=><BackButton {...props}/> }}
-                name="TurnoverRoutes"
-                component={TurnoverRoutes}
+              options={{ header:props=><BackButton {...props}/> }}
+                name="Notifications"
+                component={Notification}
               />
             </stack.Navigator>
           </NavigationContainer>
