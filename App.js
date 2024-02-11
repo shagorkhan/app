@@ -107,6 +107,11 @@ function App() {
               />
               <stack.Screen
                 options={{ header:props=><BackButton {...props}/> }}
+                name="TurnoverRoutes"
+                component={TurnoverRoutes}
+              />
+              <stack.Screen
+                options={{ header:props=><BackButton {...props}/> }}
                 name="BonusHistory"
                 component={BonusHistory}
               />
