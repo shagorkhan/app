@@ -94,10 +94,20 @@ function App() {
                 name="ChangePass"
                 component={ChangePassword}
               />
+              <stack.Screen 
+                 options={{ header:props=><BackButton {...props}/> }}
+                name="Rewards"
+                component={Rewards}
+              />
               <stack.Screen
                 options={{ header:props=><BackButton {...props}/> }}
                 name="ClaimVoucher"
                 component={ClaimVoucher}
+              />
+              <stack.Screen
+                options={{ header:props=><BackButton {...props}/> }}
+                name="BonusHistory"
+                component={BonusHistory}
               />
               <stack.Screen
                 options={{ headerShown: false }}
