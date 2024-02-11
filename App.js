@@ -114,6 +114,11 @@ function App() {
                 name="EditProfile"
                 component={EditProfile}
               />
+              <stack.Screen
+                options={{ header:props=><BackButton {...props}/> }}
+                name="TurnoverRoutes"
+                component={TurnoverRoutes}
+              />
             </stack.Navigator>
           </NavigationContainer>
         </AuthProvider>
