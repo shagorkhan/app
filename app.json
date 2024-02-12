@@ -22,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.banglamart.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -34,6 +35,17 @@
           "initialOrientation": "DEFAULT"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ae2adfe5-9ff3-46e8-af28-c6569c01410e"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/ae2adfe5-9ff3-46e8-af28-c6569c01410e"
+    }
   }
 }
