@@ -116,6 +116,11 @@ function App() {
                 component={BonusHistory}
               />
               <stack.Screen
+                options={{ header:props=><BackButton {...props}/> }}
+                name="BankDetails"
+                component={BankDetails}
+              />
+              <stack.Screen
                 options={{ headerShown: false }}
                 name="EditProfile"
                 component={EditProfile}
