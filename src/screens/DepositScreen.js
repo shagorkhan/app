@@ -239,7 +239,7 @@ const DepositScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-        <Input
+        <Input value={selectedAmount?.toString()} onChangeText={setSelectedAmount}
           style={styles.input}
           placeholder="Amount"
           keyboardType="numeric"
