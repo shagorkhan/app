@@ -16,10 +16,9 @@ export default function ClaimVoucher({ navigation }) {
 
     const handleApplyVoucher = async () => {
         setMessage(null);
-        if(!voucherCode){
-            showLoader();
-            hideLoader();
-            
+        if(voucherCode.length === 0){
+          setMessage("Write voucher code")
+            return 
         }      
         showLoader();
         try {
