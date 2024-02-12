@@ -11,7 +11,7 @@ export default function Header() {
     <View style={[style.headerContainer, { marginTop: inset.top }]}>
       <StatusBar barStyle={"dark-content"} backgroundColor={"#fff"} />
       <Image source={require("../../assets/logo.png")} style={style.logo} />
-      <View style={{flexDirection:"row",gap:6,alignItems:"center"}}>
+      {user&&(<View style={{flexDirection:"row",gap:6,alignItems:"center"}}>
         <Text
           style={{
             fontWeight: "600",
@@ -21,7 +21,7 @@ export default function Header() {
           {parseFloat(user?.balance).toFixed(1)} BDT
         </Text>
         <Ionicons name="notifications" size={24} color="black" />
-      </View>
+      </View>)}
     </View>
   );
 }

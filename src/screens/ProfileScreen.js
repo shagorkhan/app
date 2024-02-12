@@ -50,7 +50,7 @@ const ProfileScreen = ({ navigation }) => {
           <SimpleLineIcons name="arrow-right" size={24} color="black" />
         </TouchableOpacity>
         
-        <TouchableOpacity onPress={() => handleMenuPress('')} style={styles.menuItem}>
+        <TouchableOpacity onPress={() => handleMenuPress('BetHistory')} style={styles.menuItem}>
           <View style={{flexDirection:'row'}}>
             <MaterialCommunityIcons name="history" size={24} color="black" />
             <Text style={{marginLeft:15, fontSize:18}}>Bet History</Text>
