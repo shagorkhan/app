@@ -9,8 +9,7 @@ import OTP from "./src/screens/OTP";
 import UserRoutes from "./src/routes/UserRoutes";
 import getCategory from "./src/apis/getCategory";
 import { getData, storeData } from "./src/functions/storage";
-import { NativeBaseProvider, Box } from "native-base";
-import { LogBox, SafeAreaView } from "react-native";
+import { LogBox, SafeAreaView, Text } from "react-native";
 import { LoaderProvider } from "./src/context/LoaderContext";
 import { AuthProvider } from "./src/context/AuthProvider";
 import gateGames from "./src/apis/getGames";
@@ -25,9 +24,10 @@ import BonusHistory from "./src/screens/BonusHistory";
 import TurnoverRoutes from "./src/routes/TurnoverRoutes";
 import Notification from "./src/screens/Notification";
 import BetHistoryRoutes from "./src/routes/BetHistoryRoutes";
+import { NativeBaseProvider } from "native-base";
 LogBox.ignoreLogs([/SSRProvider/]);
 
-const stack = createStackNavigator();
+const Stack = createStackNavigator();
 
 function App() {
   useEffect(() => {
@@ -39,109 +39,110 @@ function App() {
   const storeGameData = async () => {
     try {
       const liveRes = await gateGames(1, "live_dealers");
-      storeData("live", liveRes.data);
+      await storeData("live", liveRes.data);
       const fishRes = await gateGames(2, "fish");
-      storeData("fish", fishRes.data);
+      await storeData("fish", fishRes.data);
       const slotRes = await gateGames(3, "novomatic");
-      storeData("slot", slotRes.data);
+      await storeData("slot", slotRes.data);
     } catch (error) {
       console.error(error);
     }
   };
 
+
   return (
     <NativeBaseProvider>
       <SafeAreaView style={{ flex: 1 }}>
-        <LoaderProvider>
-          <AuthProvider>
-            <NavigationContainer>
-              <stack.Navigator initialRouteName="HomeScreen">
-                <stack.Screen
+        <LoaderProvider style={{flex:1}}>
+          <AuthProvider style={{flex:1}}>
+            <NavigationContainer style={{flex:1}}>
+              <Stack.Navigator>
+                <Stack.Screen
                   options={{ headerShown: false }}
                   name="HomeScreen"
                   component={UserRoutes}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ headerShown: false }}
                   name="Login"
                   component={LoginScreen}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ headerShown: false }}
                   name="Register1"
                   component={RegisterScreen1}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ headerShown: false }}
                   name="Register2"
                   component={RegisterScreen2}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ headerShown: false }}
                   name="ResetPassword"
                   component={ResetPassword}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ headerShown: false }}
                   name="OTP"
                   component={OTP}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ headerShown: false }}
                   name="GameScreen"
                   component={GameScreen}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ header: (props) => <BackButton {...props} /> }}
                   name="ChangePass"
                   component={ChangePassword}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ header: (props) => <BackButton {...props} /> }}
                   name="Rewards"
                   component={Rewards}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ header: (props) => <BackButton {...props} /> }}
                   name="ClaimVoucher"
                   component={ClaimVoucher}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ header: (props) => <BackButton {...props} /> }}
                   name="TurnoverRoutes"
                   component={TurnoverRoutes}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ header: (props) => <BackButton {...props} /> }}
                   name="BonusHistory"
                   component={BonusHistory}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ header: (props) => <BackButton {...props} /> }}
                   name="BankDetails"
                   component={BankDetails}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ headerShown: false }}
                   name="EditProfile"
                   component={EditProfile}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ header: (props) => <BackButton {...props} /> }}
                   name="Notifications"
                   component={Notification}
                 />
-                <stack.Screen
+                <Stack.Screen
                   options={{ header: (props) => <BackButton color={"#fff"} {...props} /> }}
                   name="BetHistory"
                   component={BetHistoryRoutes}
                 />
-              </stack.Navigator>
+              </Stack.Navigator>
             </NavigationContainer>
           </AuthProvider>
         </LoaderProvider>
       </SafeAreaView>
-    </NativeBaseProvider>
+      </NativeBaseProvider>
   );
 }
 export default App;
